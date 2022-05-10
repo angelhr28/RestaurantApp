@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_degraded"
+    tools:context=".ui.view.CheckInActivity">
+
+    <ImageButton
+        android:id="@+id/bt_back"
+        android:layout_width="36dp"
+        android:layout_height="@dimen/margin_36"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_24"
+        android:background="@drawable/ic_chevron_left"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_48"
+        android:background="@drawable/logo_shape"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tedtFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_48"
+        android:layout_marginTop="@dimen/margin_36"
+        android:layout_marginRight="@dimen/margin_48"
+        android:hint="@string/request_full_name"
+        app:boxCornerRadiusTopEnd="@dimen/corner_standart"
+        app:boxCornerRadiusTopStart="@dimen/corner_standart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:inputType="textPersonName"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tedtPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:hint="@string/request_phone_number"
+        app:boxCornerRadiusTopEnd="@dimen/corner_standart"
+        app:boxCornerRadiusTopStart="@dimen/corner_standart"
+        app:layout_constraintLeft_toLeftOf="@+id/tedtFullName"
+        app:layout_constraintRight_toRightOf="@+id/tedtFullName"
+        app:layout_constraintTop_toBottomOf="@+id/tedtFullName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:inputType="phone"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tedtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_48"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_48"
+        android:hint="@string/request_email"
+        app:boxCornerRadiusTopEnd="@dimen/corner_standart"
+        app:boxCornerRadiusTopStart="@dimen/corner_standart"
+        app:layout_constraintLeft_toLeftOf="@+id/tedtPhone"
+        app:layout_constraintRight_toRightOf="@+id/tedtPhone"
+        app:layout_constraintTop_toBottomOf="@+id/tedtPhone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tedtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:hint="@string/request_password"
+        app:boxCornerRadiusTopEnd="@dimen/corner_standart"
+        app:boxCornerRadiusTopStart="@dimen/corner_standart"
+        app:layout_constraintLeft_toLeftOf="@+id/tedtEmail"
+        app:layout_constraintRight_toRightOf="@+id/tedtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tedtEmail"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btCheckIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_36"
+        android:backgroundTint="@color/secondary"
+        android:enabled="false"
+        android:paddingStart="@dimen/margin_36"
+        android:paddingEnd="@dimen/margin_36"
+        android:text="@string/login"
+        app:cornerRadius="@dimen/corner_button"
+        app:layout_constraintLeft_toLeftOf="@+id/tedtEmail"
+        app:layout_constraintRight_toRightOf="@+id/tedtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tedtPassword" />
+
+    <View
+        android:id="@+id/background_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_degraded"
+        android:clickable="true"
+        android:elevation="@dimen/margin_24"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/margin_24"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

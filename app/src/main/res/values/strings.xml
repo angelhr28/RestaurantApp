@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RestaurantApp</string>
+    <string name="request_email">Ingresar correo</string>
+    <string name="request_password">Ingresar contraseña</string>
+    <string name="login">Ingresar</string>
+    <string name="check_in">Registrar</string>
+    <string name="request_phone_number">Ingresa un numero de celular</string>
+    <string name="request_full_name">Ingresa tu nombre completo</string>
+
+
+
+    <string name="home_item">Home</string>
+    <string name="reports_item">Reportes</string>
+    <string name="compras_item">Carrito</string>
+    <string name="facturas_item">Facturas</string>
+    <string name="log_out_item">Cerrar Sesión</string>
+
+    <string name="configuracion_item">Configuración</string>
+
+</resources>
