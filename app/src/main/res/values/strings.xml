@@ -4,6 +4,9 @@
     <string name="request_password">Ingresar contraseña</string>
     <string name="login">Ingresar</string>
     <string name="check_in">Registrar</string>
+    <string name="sale">Pagar</string>
+    <string name="add">Añadir</string>
+    <string name="order">Perdir</string>
     <string name="request_phone_number">Ingresa un numero de celular</string>
     <string name="request_full_name">Ingresa tu nombre completo</string>
 
