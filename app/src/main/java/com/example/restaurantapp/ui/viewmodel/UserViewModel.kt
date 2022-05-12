@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.restaurantapp.data.UserRepository
 import com.example.restaurantapp.data.model.UserModel
+import com.example.restaurantapp.domain.model.User
+import com.example.restaurantapp.utils.exceptionFirebase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,20 +20,18 @@ class UserViewModel @Inject constructor(
     val isProgress = MutableLiveData<Boolean>()
     val isLogIn = MutableLiveData<Boolean>()
     val isLogOut = MutableLiveData<Boolean>()
+    val user = MutableLiveData<User>()
 
     fun logIn(email: String, password: String) {
         viewModelScope.launch {
             isProgress.postValue(true)
             try {
-                val userS = repository.logIn(email, password).firstOrNull()
-                userS?.let {
-                    repository.getProfile(email)
-                    isLogIn.postValue(true)
-                }
+                repository.logIn(email, password)
+                repository.saveProfile(email)
+                isLogIn.postValue(true)
             } catch (e: Exception) {
-                snackbar.postValue(e.message)
+                snackbar.postValue(exceptionFirebase(e) ?: "")
             }
-
             isProgress.postValue(false)
         }
     }
@@ -47,9 +46,9 @@ class UserViewModel @Inject constructor(
         viewModelScope.launch {
             isProgress.postValue(true)
             try {
-                repository.checkInAuth(user).firstOrNull()
-                repository.checkInFirestore(user).firstOrNull()
-                repository.getProfile(user.email)
+                repository.checkInAuth(user)
+                repository.checkInFirestore(user)
+                repository.saveProfile(user.email)
                 isLogIn.postValue(true)
             } catch (e: Exception) {
                 snackbar.postValue(e.message)
@@ -63,4 +62,9 @@ class UserViewModel @Inject constructor(
         isLogOut.postValue(true)
     }
 
+    fun profile() {
+        repository.getProfile().apply {
+            user.postValue(this)
+        }
+    }
 }

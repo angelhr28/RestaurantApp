@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.gson.Gson
 
 
 fun setColorToStatusBar(activity: Activity, color: Int = Color.WHITE) {
@@ -145,4 +146,16 @@ fun hideKeyboard(activity: Activity) {
 fun hideKeyboardFrom(context: Context, view: View) {
     val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun Any.toJson(): String = Gson().toJson(this)
+
+fun parseJson(json: String) {
+    val gson = Gson()
+    val obj = gson.fromJson(json, Any::class.java)
+}
+
+inline fun <reified T : Any> parseJson(json: String): T {
+    val gson = Gson()
+    return gson.fromJson(json, T::class.java)
 }

@@ -2,6 +2,7 @@ package com.example.restaurantapp.ui.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import com.example.restaurantapp.R
@@ -9,7 +10,6 @@ import com.example.restaurantapp.databinding.ActivityHomeBinding
 import com.example.restaurantapp.databinding.NavHeaderBinding
 import com.example.restaurantapp.ui.viewmodel.UserViewModel
 import com.example.restaurantapp.utils.AppActivity
-
 
 class HomeActivity : AppActivity() {
 
@@ -25,6 +25,15 @@ class HomeActivity : AppActivity() {
     }
 
     private fun observerBinding() {
+        userViewModel.profile()
+        userViewModel.user.observe(this) {
+            Log.e("TAG", "observerBinding: $it")
+            val viewHeader = binding.navView.getHeaderView(0)
+            val headerBinding = NavHeaderBinding.bind(viewHeader)
+            headerBinding.username.text = it.fullName
+            headerBinding.email.text = it.email
+        }
+
         userViewModel.isLogOut.observe(this) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -37,11 +46,6 @@ class HomeActivity : AppActivity() {
             viewHome.toolbar.setNavigationOnClickListener {
                 drawarLayout.openDrawer(GravityCompat.START)
             }
-            val viewHeader = binding.navView.getHeaderView(0)
-            val headerBinding = NavHeaderBinding.bind(viewHeader)
-            headerBinding.username.text = ""
-            headerBinding.email.text = ""
-
             navView.setNavigationItemSelectedListener { menuItem ->
                 menuItem.isChecked = true
                 when (menuItem.itemId) {
