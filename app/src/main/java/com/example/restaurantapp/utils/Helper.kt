@@ -150,11 +150,6 @@ fun hideKeyboardFrom(context: Context, view: View) {
 
 fun Any.toJson(): String = Gson().toJson(this)
 
-fun parseJson(json: String) {
-    val gson = Gson()
-    val obj = gson.fromJson(json, Any::class.java)
-}
-
 inline fun <reified T : Any> parseJson(json: String): T {
     val gson = Gson()
     return gson.fromJson(json, T::class.java)

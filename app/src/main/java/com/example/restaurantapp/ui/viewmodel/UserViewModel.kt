@@ -3,9 +3,9 @@ package com.example.restaurantapp.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.restaurantapp.data.UserRepository
 import com.example.restaurantapp.data.model.UserModel
 import com.example.restaurantapp.domain.model.User
+import com.example.restaurantapp.domain.usecase.user.*
 import com.example.restaurantapp.utils.exceptionFirebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +13,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserViewModel @Inject constructor(
-    private val repository: UserRepository,
+    private val loginUseCase: LogInUseCase,
+    private val logOutUseCase: LogOutUseCase,
+    private val checkInUserUseCase: CheckInUserUseCase,
+    private val profileUseCase: ProfileUseCase,
+    private val verifyLogInUseCase: VerifyLogInUseCase,
 ) : ViewModel() {
 
     val snackbar = MutableLiveData<String>()
@@ -26,8 +30,7 @@ class UserViewModel @Inject constructor(
         viewModelScope.launch {
             isProgress.postValue(true)
             try {
-                repository.logIn(email, password)
-                repository.saveProfile(email)
+                loginUseCase(email, password)
                 isLogIn.postValue(true)
             } catch (e: Exception) {
                 snackbar.postValue(exceptionFirebase(e) ?: "")
@@ -36,19 +39,11 @@ class UserViewModel @Inject constructor(
         }
     }
 
-    fun isLogIn() {
-        repository.currentUser()?.let {
-            isLogIn.postValue(true)
-        }
-    }
-
     fun checkIn(user: UserModel) {
         viewModelScope.launch {
             isProgress.postValue(true)
             try {
-                repository.checkInAuth(user)
-                repository.checkInFirestore(user)
-                repository.saveProfile(user.email)
+                checkInUserUseCase(user)
                 isLogIn.postValue(true)
             } catch (e: Exception) {
                 snackbar.postValue(e.message)
@@ -58,13 +53,19 @@ class UserViewModel @Inject constructor(
     }
 
     fun logOut() {
-        repository.logOut()
+        logOutUseCase()
         isLogOut.postValue(true)
     }
 
+    fun isLogIn() {
+        verifyLogInUseCase()?.let {
+            isLogIn.postValue(true)
+        }
+    }
+
     fun profile() {
-        repository.getProfile().apply {
-            user.postValue(this)
+        profileUseCase()?.let {
+            user.postValue(it)
         }
     }
 }

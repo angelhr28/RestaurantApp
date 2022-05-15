@@ -11,13 +11,13 @@
         android:theme="@style/Theme.RestaurantApp"
         android:windowSoftInputMode="adjustResize">
         <activity
-            android:name=".ui.view.HomeActivity"
+            android:name=".ui.view.screen.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.CheckInActivity"
+            android:name=".ui.view.screen.CheckInActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.MainActivity"
+            android:name=".ui.view.screen.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

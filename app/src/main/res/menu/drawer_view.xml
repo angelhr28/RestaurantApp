@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_request"
             android:checked="true"
-            android:icon="@drawable/ic_menu"
-            android:title="@string/home_item" />
-        <item
-            android:id="@+id/nav_carrito"
-            android:icon="@drawable/ic_menu"
-            android:title="@string/compras_item" />
+            android:icon="@drawable/ic_receipt"
+            android:title="@string/request_item"
+            app:iconTint="@color/secondary" />
         <item
             android:id="@+id/nav_report"
-            android:icon="@drawable/ic_menu"
-            android:title="@string/reports_item" />
+            android:icon="@drawable/ic_assessment"
+            android:title="@string/reports_item"
+            app:iconTint="@color/secondary" />
         <item
-            android:id="@+id/nav_facturas"
-            android:icon="@drawable/ic_menu"
-            android:title="@string/facturas_item" />
-
+            android:id="@+id/nav_sales"
+            android:icon="@drawable/ic_sale"
+            android:title="@string/sales_item"
+            app:iconTint="@color/secondary" />
         <!-- Sección de configuración -->
         <item
             android:id="@+id/configuration_section"
@@ -27,7 +26,7 @@
             <menu>
                 <item
                     android:id="@+id/nav_log_out"
-                    android:icon="@android:drawable/ic_lock_power_off"
+                    android:icon="@drawable/ic_logout"
                     android:title="@string/log_out_item" />
             </menu>
         </item>

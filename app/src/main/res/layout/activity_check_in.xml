@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_degraded"
-    tools:context=".ui.view.CheckInActivity">
+    tools:context=".ui.view.screen.CheckInActivity">
 
     <ImageButton
         android:id="@+id/bt_back"

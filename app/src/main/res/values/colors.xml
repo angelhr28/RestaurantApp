@@ -6,6 +6,7 @@
     <color name="secondary">#FCA687</color>
     <color name="secondary_degraded">#4DFCA687</color>
     <color name="degraded">#00FFFFFF</color>
+    <color name="disable">#979696</color>
 
     <color name="window_background">#FFF5F5F5</color>
 

@@ -1,48 +1,50 @@
-package com.example.restaurantapp.ui.view
+package com.example.restaurantapp.ui.view.screen
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import com.example.restaurantapp.data.model.UserModel
-import com.example.restaurantapp.databinding.ActivityCheckInBinding
+import com.example.restaurantapp.databinding.ActivityMainBinding
 import com.example.restaurantapp.ui.viewmodel.UserViewModel
 import com.example.restaurantapp.utils.*
 
-class CheckInActivity : AppActivity() {
+class MainActivity : AppActivity() {
 
-    private lateinit var binding: ActivityCheckInBinding
+    private lateinit var binding: ActivityMainBinding
     private val userViewModel: UserViewModel by viewModels()
 
     private var email: String = ""
     private var password: String = ""
-    private var fullName: String = ""
-    private var phone: String = ""
-    private val length = 9
+    private val length: Int = 9
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =
-            ActivityCheckInBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
         observersBinding()
     }
 
-    private fun checkIn() {
+    private fun checkInUI() {
+        val intent = Intent(this, CheckInActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun logIn() {
         hideKeyboardFrom(this, binding.root)
-        val user = UserModel(email, fullName, phone, password)
-        userViewModel.checkIn(user)
+        userViewModel.logIn(email, password)
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        userViewModel.isLogIn()
     }
 
     private fun isEnableButton(): Boolean {
         return isValidateEmail(email)
                 && !isNullOrEmpty(email)
                 && !isNullOrEmpty(password)
-                && !isNullOrEmpty(phone)
-                && !isNullOrEmpty(fullName)
                 && password.length >= length
-                && phone.length == length
     }
 
     private fun observersBinding() {
@@ -68,7 +70,7 @@ class CheckInActivity : AppActivity() {
                     !isValidateEmail(email) -> "El formato del correo es incorrecto"
                     else -> null
                 }
-                btCheckIn.isEnabled = isEnableButton()
+                btLogin.isEnabled = isEnableButton()
             }
             val tchPassword = afterTextChanged {
                 password = edtPassword.text.toString().trim()
@@ -76,26 +78,12 @@ class CheckInActivity : AppActivity() {
                     password.length < length -> "La contraseña debe tener minimo 9 caracteres"
                     else -> null
                 }
-                btCheckIn.isEnabled = isEnableButton()
-            }
-            val tchPhone = afterTextChanged {
-                phone = edtPhone.text.toString().trim()
-                tedtPhone.error = when {
-                    phone.length != length -> "El numero de celular es incorrecto"
-                    else -> null
-                }
-                btCheckIn.isEnabled = isEnableButton()
-            }
-            val tchFullName = afterTextChanged {
-                fullName = edtFullName.text.toString().trim()
-                btCheckIn.isEnabled = isEnableButton()
+                btLogin.isEnabled = isEnableButton()
             }
             edtEmail.addTextChangedListener(tchEmail)
             edtPassword.addTextChangedListener(tchPassword)
-            edtPhone.addTextChangedListener(tchPhone)
-            edtFullName.addTextChangedListener(tchFullName)
-            btCheckIn.setOnClickListener { checkIn() }
-            btBack.setOnClickListener { onBackPressed() }
+            btCheckIn.setOnClickListener { checkInUI() }
+            btLogin.setOnClickListener { logIn() }
         }
     }
 
@@ -103,5 +91,4 @@ class CheckInActivity : AppActivity() {
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
-
 }

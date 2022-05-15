@@ -14,14 +14,31 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RoomModule {
 
-    private const val DEVELOPER_DATABASE_NAME = "developer.db"
+    private const val RESTAURANT_DATABASE_NAME = "RESTAURANT.db"
 
     @Singleton
     @Provides
     fun providerRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, AppDatabase::class.java, DEVELOPER_DATABASE_NAME).build()
+        Room.databaseBuilder(context, AppDatabase::class.java, RESTAURANT_DATABASE_NAME).build()
 
     @Singleton
     @Provides
-    fun providerDeveloperDao(db: AppDatabase) = db.developerDao()
+    fun providerBoardDao(db: AppDatabase) = db.boardDao()
+
+    @Singleton
+    @Provides
+    fun providerCategoryDao(db: AppDatabase) = db.categoryDao()
+
+    @Singleton
+    @Provides
+    fun providerProductDao(db: AppDatabase) = db.productDao()
+
+    @Singleton
+    @Provides
+    fun providerRequestDao(db: AppDatabase) = db.requestDao()
+
+    @Singleton
+    @Provides
+    fun providerRequestDetailDao(db: AppDatabase) = db.requestDetailDao()
+
 }

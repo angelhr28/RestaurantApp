@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/nav_request">
+
+    <fragment
+        android:id="@+id/nav_request"
+        android:name="com.example.restaurantapp.ui.view.fragment.RequestFragment"
+        android:label="@string/request_item"
+        tools:layout="@layout/fragment_request" />
+
+    <fragment
+        android:id="@+id/nav_report"
+        android:name="com.example.restaurantapp.ui.view.fragment.ReportFragment"
+        android:label="@string/reports_item"
+        tools:layout="@layout/fragment_report" />
+
+    <fragment
+        android:id="@+id/nav_sales"
+        android:name="com.example.restaurantapp.ui.view.fragment.SalesFragment"
+        android:label="@string/sales_item"
+        tools:layout="@layout/fragment_sales" />
+
+</navigation>
