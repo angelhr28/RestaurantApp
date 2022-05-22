@@ -21,6 +21,7 @@ object RoomModule {
     fun providerRoom(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, AppDatabase::class.java, RESTAURANT_DATABASE_NAME).build()
 
+
     @Singleton
     @Provides
     fun providerBoardDao(db: AppDatabase) = db.boardDao()

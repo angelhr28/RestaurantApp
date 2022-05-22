@@ -7,10 +7,8 @@ import com.example.restaurantapp.utils.enums.DeliveryType
 import com.example.restaurantapp.utils.enums.PaymentMethod
 import com.example.restaurantapp.utils.enums.RequestStatus
 import com.example.restaurantapp.utils.enums.Status
-import com.google.type.Date
-import com.google.type.DateTime
 
-@Entity(tableName = "request_table")
+@Entity(tableName = "requests")
 data class RequestEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
@@ -22,7 +20,7 @@ data class RequestEntity(
     @ColumnInfo(name = "delivery_address") val deliveryAddress: String?,
     @ColumnInfo(name = "references") val references: String?,
     @ColumnInfo(name = "payment_method") val paymentMethod: PaymentMethod?,
-    @ColumnInfo(name = "paid_date") val paidDate: Date,
-    @ColumnInfo(name = "create_at") val createAt: DateTime,
+    @ColumnInfo(name = "paid_date") val paidDate: String,
+    @ColumnInfo(name = "create_at") val createAt: String,
     @ColumnInfo(name = "status") val status: Status,
 )

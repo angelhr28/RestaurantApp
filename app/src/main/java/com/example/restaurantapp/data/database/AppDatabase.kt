@@ -2,19 +2,19 @@ package com.example.restaurantapp.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.restaurantapp.data.database.dao.*
-import com.example.restaurantapp.data.database.entities.BoardEntity
-import com.example.restaurantapp.data.database.entities.CategoryEntity
-import com.example.restaurantapp.data.database.entities.ProductEntity
-import com.example.restaurantapp.data.database.entities.RequestEntity
+import com.example.restaurantapp.data.database.entities.*
+import com.example.restaurantapp.utils.Converters
 
 @Database(entities = [
     BoardEntity::class,
     CategoryEntity::class,
     ProductEntity::class,
     RequestEntity::class,
-    RequestDetailDao::class,
+    RequestDetailEntity::class,
 ], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun boardDao(): BoardDao
     abstract fun categoryDao(): CategoryDao

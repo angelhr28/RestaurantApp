@@ -4,29 +4,38 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.3453125" />
+        <entry key="app/src/main/res/drawable-normal-hdpi/ic_chevron_left.xml" value="0.233" />
+        <entry key="app/src/main/res/drawable-small-mdpi/ic_manage_accounts.xml" value="0.235" />
         <entry key="app/src/main/res/drawable-v24/ic_assessment.xml" value="0.273" />
         <entry key="app/src/main/res/drawable-v24/ic_feed.xml" value="0.273" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.32" />
         <entry key="app/src/main/res/drawable-v24/ic_list_alt.xml" value="0.273" />
         <entry key="app/src/main/res/drawable-v24/ic_receipt.xml" value="0.273" />
         <entry key="app/src/main/res/drawable-v24/ic_sale.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/add-48px.xml" value="0.235" />
+        <entry key="app/src/main/res/drawable/add_business-48px.xml" value="0.235" />
         <entry key="app/src/main/res/drawable/color_nav_selector.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/delete-48px.xml" value="0.235" />
         <entry key="app/src/main/res/drawable/ic_check_circle_disable.xml" value="0.32" />
         <entry key="app/src/main/res/drawable/ic_check_circle_enable.xml" value="0.32" />
         <entry key="app/src/main/res/drawable/ic_chevron_left.xml" value="0.32" />
+        <entry key="app/src/main/res/drawable/ic_ellipse.xml" value="0.235" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.32" />
         <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.32" />
         <entry key="app/src/main/res/drawable/ic_logout.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_manage_accounts.xml" value="0.235" />
         <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.32" />
         <entry key="app/src/main/res/layout/activity_check_in.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_board.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/fragment_boards.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.5432291666666667" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.5432291666666667" />
         <entry key="app/src/main/res/layout/fragment_sales.xml" value="0.5432291666666667" />
         <entry key="app/src/main/res/layout/home_content.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_card.xml" value="0.75" />
-        <entry key="app/src/main/res/layout/item_card_busy.xml" value="0.265625" />
+        <entry key="app/src/main/res/layout/item_card_busy.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_card_free.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.33" />
         <entry key="app/src/main/res/menu-v26/drawer_view.xml" value="0.5421875" />

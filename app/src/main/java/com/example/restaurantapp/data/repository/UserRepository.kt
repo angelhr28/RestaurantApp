@@ -1,6 +1,7 @@
-package com.example.restaurantapp.data
+package com.example.restaurantapp.data.repository
 
-import com.example.restaurantapp.data.cache.UserCache
+import com.example.restaurantapp.data.cache.DataCache
+import com.example.restaurantapp.data.database.dao.*
 import com.example.restaurantapp.data.model.UserModel
 import com.example.restaurantapp.data.network.UserService
 import com.example.restaurantapp.domain.model.User
@@ -9,7 +10,13 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(
     private val userService: UserService,
-    private val userCache: UserCache,
+    private val userCache: DataCache,
+
+    private val boardDao: BoardDao,
+    private val categoryDao: CategoryDao,
+    private val productDao: ProductDao,
+    private val requestDao: RequestDao,
+    private val requestDetailDao: RequestDetailDao,
 ) {
 
     suspend fun checkInAuth(userModel: UserModel) {
@@ -24,9 +31,14 @@ class UserRepository @Inject constructor(
         userService.logIn(email, password)
     }
 
-    fun logOut() {
-        userService.logOut()
+    suspend fun logOut() {
+        boardDao.deleteAll()
+        categoryDao.deleteAll()
+        productDao.deleteAll()
+        requestDao.deleteAll()
+        requestDetailDao.deleteAll()
         userCache.clearUserCache()
+        userService.logOut()
     }
 
     suspend fun saveProfile(email: String) {

@@ -6,7 +6,7 @@ import com.example.restaurantapp.data.database.entities.RequestEntity
 @Dao
 interface RequestDao {
 
-    @Query("SELECT * FROM request_table ORDER BY id")
+    @Query("SELECT * FROM requests ORDER BY id")
     suspend fun getAll(): List<RequestEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,6 +18,6 @@ interface RequestDao {
     @Delete(entity = RequestEntity::class)
     suspend fun delete(request: RequestEntity)
 
-    @Query("DELETE FROM request_table")
-    suspend fun clearAll()
+    @Query("DELETE FROM requests")
+    suspend fun deleteAll()
 }

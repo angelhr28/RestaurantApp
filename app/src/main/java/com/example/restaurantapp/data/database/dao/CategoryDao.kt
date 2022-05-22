@@ -6,7 +6,7 @@ import com.example.restaurantapp.data.database.entities.CategoryEntity
 @Dao
 interface CategoryDao {
 
-    @Query("SELECT * FROM category_table ORDER BY id")
+    @Query("SELECT * FROM categories ORDER BY id")
     suspend fun getAll(): List<CategoryEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,6 +18,6 @@ interface CategoryDao {
     @Delete(entity = CategoryEntity::class)
     suspend fun delete(category: CategoryEntity)
 
-    @Query("DELETE FROM category_table")
-    suspend fun clearAll()
+    @Query("DELETE FROM categories")
+    suspend fun deleteAll()
 }

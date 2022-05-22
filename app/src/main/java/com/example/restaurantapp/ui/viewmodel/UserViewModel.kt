@@ -53,8 +53,10 @@ class UserViewModel @Inject constructor(
     }
 
     fun logOut() {
-        logOutUseCase()
-        isLogOut.postValue(true)
+        viewModelScope.launch {
+            logOutUseCase()
+            isLogOut.postValue(true)
+        }
     }
 
     fun isLogIn() {

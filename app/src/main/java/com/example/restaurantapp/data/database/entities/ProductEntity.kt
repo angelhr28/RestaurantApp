@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.restaurantapp.utils.enums.Status
 
-@Entity(tableName = "product_table")
+@Entity(tableName = "products")
 data class ProductEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int,
@@ -17,5 +17,3 @@ data class ProductEntity(
     @ColumnInfo(name = "desc_prom") val descProm: String,
     @ColumnInfo(name = "status") val status: Status,
 )
-
-//fun Request.toDatabase() = RequestEntity(status = status)

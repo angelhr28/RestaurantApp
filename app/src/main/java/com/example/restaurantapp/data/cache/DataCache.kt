@@ -7,7 +7,7 @@ import com.example.restaurantapp.utils.parseJson
 import com.example.restaurantapp.utils.toJson
 import javax.inject.Inject
 
-class UserCache @Inject constructor(
+class DataCache @Inject constructor(
     private val preferences: SharedPreferences,
 ) {
     fun clearUserCache() {

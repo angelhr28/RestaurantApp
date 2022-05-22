@@ -58,7 +58,7 @@ class HomeActivity : AppActivity() {
 
             navView.setupWithNavController(navController)
             appBarConfiguration = AppBarConfiguration(
-                setOf(R.id.nav_request, R.id.nav_report, R.id.nav_sales),
+                setOf(R.id.nav_boards, R.id.nav_report, R.id.nav_sales),
                 drawerLayout)
 
             NavigationUI.setupActionBarWithNavController(this@HomeActivity,

@@ -1,7 +1,7 @@
 package com.example.restaurantapp.domain.usecase.user
 
-import com.example.restaurantapp.data.UserRepository
 import com.example.restaurantapp.data.model.UserModel
+import com.example.restaurantapp.data.repository.UserRepository
 import javax.inject.Inject
 
 class CheckInUserUseCase @Inject constructor(

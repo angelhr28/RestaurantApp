@@ -6,7 +6,7 @@ import com.example.restaurantapp.data.database.entities.ProductEntity
 @Dao
 interface ProductDao {
 
-    @Query("SELECT * FROM product_table ORDER BY id")
+    @Query("SELECT * FROM products ORDER BY id")
     suspend fun getAll(): List<ProductEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,6 +18,6 @@ interface ProductDao {
     @Delete(entity = ProductEntity::class)
     suspend fun delete(product: ProductEntity)
 
-    @Query("DELETE FROM product_table")
-    suspend fun clearAll()
+    @Query("DELETE FROM products ")
+    suspend fun deleteAll()
 }

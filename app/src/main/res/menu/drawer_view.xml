@@ -4,7 +4,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_request"
+            android:id="@+id/nav_boards"
             android:checked="true"
             android:icon="@drawable/ic_receipt"
             android:title="@string/request_item"
