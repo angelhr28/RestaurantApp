@@ -1,5 +1,6 @@
 package com.example.restaurantapp.utils
 
+import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,5 +15,6 @@ open class AppActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.setDecorFitsSystemWindows(false)
         }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
     }
 }

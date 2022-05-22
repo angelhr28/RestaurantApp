@@ -49,7 +49,6 @@ class BoardsFragment : Fragment() {
         setUpFab()
         observersBinding()
         currentDate()
-
     }
 
     private fun observersBinding() {

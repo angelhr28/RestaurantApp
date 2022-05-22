@@ -1,10 +1,8 @@
 package com.example.restaurantapp.utils
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
-import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -15,7 +13,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.example.restaurantapp.R
@@ -26,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -161,33 +157,21 @@ inline fun <reified T : Any> parseJson(json: String): T {
     return gson.fromJson(json, T::class.java)
 }
 
-@RequiresApi(Build.VERSION_CODES.N)
-@SuppressLint("SimpleDateFormat", "NewApi")
 fun String.parseDate(
     fromDateFormat: String = "EEE MMM dd HH:mm:ss zzz yyyy",
     toDateFormat: String = "dd-MM-yyyy HH:mm:ss",
 ): String {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val formatToDate = DateTimeFormatter.ofPattern(fromDateFormat)
-        val stringToDate = formatToDate.parse(this)
-        val formatToString = DateTimeFormatter.ofPattern(toDateFormat)
-        formatToString.format(stringToDate)
-
-    } else {
-        val formatToDate = SimpleDateFormat(fromDateFormat)
-        val formatToString = SimpleDateFormat(toDateFormat)
-        val stringToDate = formatToDate.parse(this)
-        formatToString.format(stringToDate!!)
-    }
+    val formatToDate = SimpleDateFormat(fromDateFormat, Locale.ENGLISH)
+    val formatToString = SimpleDateFormat(toDateFormat, Locale.ENGLISH)
+    val stringToDate = formatToDate.parse(this)
+    return formatToString.format(stringToDate!!)
 }
 
-@SuppressLint("NewApi", "SimpleDateFormat")
 fun String.toDate(dateFormat: String = "dd-MM-yyyy HH:mm:ss"): Date {
-    val date = SimpleDateFormat(dateFormat)
+    val date = SimpleDateFormat(dateFormat, Locale.getDefault())
     return date.parse(this)!!
 }
 
-@RequiresApi(Build.VERSION_CODES.N)
 fun currentDate(): String {
     val currentDate = Date()
     return currentDate.toString().parseDate()
