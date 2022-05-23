@@ -38,8 +38,11 @@ captures/
 
 # IntelliJ
 *.iml
-*/.idea
-**/.idea
+**/.idea/*
+*/.idea/*
+.idea/*
+.idea/
+.idea
 .idea/misc.xml
 .idea/deploymentTargetDropDown.xml
 .idea/workspace.xml
