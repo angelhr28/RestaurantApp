@@ -22,7 +22,9 @@ class BoardViewModel @Inject constructor(
     val isProgress = MutableLiveData<Boolean>()
     val snackbar = MutableLiveData<String>()
     val boards = MutableLiveData<List<Board?>>()
-
+    val createBoard = MutableLiveData<String>()
+    val deleteBoard = MutableLiveData<String>()
+    val updateBoard = MutableLiveData<String>()
 
     fun onCreate() {
         viewModelScope.launch {
@@ -39,13 +41,25 @@ class BoardViewModel @Inject constructor(
 
     fun add(board: Board) {
         viewModelScope.launch {
-            addBoardUseCase(board)
+            try {
+                val id = addBoardUseCase(board)
+                createBoard.postValue(id)
+                snackbar.postValue("Mesa creada correctamente.")
+            } catch (e: Exception) {
+                snackbar.postValue(exceptionFirebase(e) ?: "")
+            }
         }
     }
 
-    fun delete(id: Int) {
+    fun delete(id: String) {
         viewModelScope.launch {
-            deleteBoardUseCase(id)
+            try {
+                deleteBoardUseCase(id)
+                deleteBoard.postValue(id)
+                snackbar.postValue("Mesa eliminada correctamente.")
+            } catch (e: Exception) {
+                snackbar.postValue(exceptionFirebase(e) ?: "")
+            }
         }
     }
 

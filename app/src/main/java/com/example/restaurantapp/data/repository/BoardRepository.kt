@@ -28,7 +28,7 @@ class BoardRepository @Inject constructor(
         return api.insertAll(boards)
     }
 
-    suspend fun deleteBoardFromApi(id: Int) {
+    suspend fun deleteBoardFromApi(id: String) {
         api.delete(id)
     }
 
@@ -40,7 +40,7 @@ class BoardRepository @Inject constructor(
         boardDao.deleteAll()
     }
 
-    suspend fun deleteBoardFromDataBase(id: Int) {
+    suspend fun deleteBoardFromDataBase(id: String) {
         boardDao.delete(id)
     }
 }

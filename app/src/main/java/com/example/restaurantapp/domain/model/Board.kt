@@ -8,4 +8,5 @@ data class Board(
     val status: Status,
     val createdAt: Date = Date(System.currentTimeMillis()),
     val updatedAt: Date = Date(System.currentTimeMillis()),
+    var flgDelete: Boolean = false,
 )

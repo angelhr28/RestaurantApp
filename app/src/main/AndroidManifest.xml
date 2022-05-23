@@ -12,6 +12,9 @@
         android:theme="@style/Theme.RestaurantApp"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".ui.view.screen.RequestActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.screen.HomeActivity"
             android:exported="false" />
         <activity

@@ -1,8 +1,6 @@
 package com.example.restaurantapp.domain.mapper
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import com.example.restaurantapp.data.database.entities.BoardEntity
 import com.example.restaurantapp.data.model.BoardModel
 import com.example.restaurantapp.domain.model.Board
@@ -33,7 +31,6 @@ fun DocumentSnapshot.toBoardServices(): BoardModel? {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.N)
 fun BoardModel.toBoardServices(): HashMap<String, Any> {
     return hashMapOf(
         "status" to status.code,

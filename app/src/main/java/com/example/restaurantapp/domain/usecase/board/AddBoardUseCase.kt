@@ -9,8 +9,9 @@ import javax.inject.Inject
 class AddBoardUseCase @Inject constructor(
     private val repository: BoardRepository,
 ) {
-    suspend operator fun invoke(board: Board) {
+    suspend operator fun invoke(board: Board): String {
         val responseApi = repository.insertAllFromApi(listOf(board.toBoardModel()))
         repository.insertAllFromDataBase(responseApi.map { it.toBoardEntity() })
+        return responseApi.first().id
     }
 }

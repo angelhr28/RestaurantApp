@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.restaurantapp.databinding.ItemCardBusyBinding
 import com.example.restaurantapp.domain.model.Board
+import com.example.restaurantapp.ui.view.fragment.BoardListener
 import com.example.restaurantapp.ui.view.viewholder.interfaces.BoardViewHolder
 
 class BoardBusyViewHolder(private val binding: ItemCardBusyBinding) :
@@ -17,11 +18,14 @@ class BoardBusyViewHolder(private val binding: ItemCardBusyBinding) :
         }
     }
 
-    override fun bind(board: Board?, position: Int, listener: (String) -> Unit) {
+    override fun bind(board: Board?, position: Int, listener: (BoardListener) -> Unit) {
         binding.apply {
             lblOrder.text = position.toString()
-            root.setOnClickListener {
-                board?.id?.let { it1 -> listener(it1) }
+            btAddRequest.setOnClickListener { _ ->
+                board?.id?.let { listener(BoardListener.AddRequest(it)) }
+            }
+            btSaleRequest.setOnClickListener { _ ->
+                board?.id?.let { listener(BoardListener.SaleRequest(it)) }
             }
         }
     }

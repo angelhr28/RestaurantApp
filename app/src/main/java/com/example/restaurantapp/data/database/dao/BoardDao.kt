@@ -16,7 +16,7 @@ interface BoardDao {
     suspend fun insertAll(boards: List<BoardEntity>)
 
     @Query("DELETE FROM boards WHERE id = :id")
-    suspend fun delete(id: Int)
+    suspend fun delete(id: String)
 
     @Query("DELETE FROM boards")
     suspend fun deleteAll()

@@ -81,9 +81,8 @@ fun isNullOrEmpty(text: Any): Boolean {
     }
 }
 
-fun View.showSimpleSnackBar(
+fun View.makeSnackbar(
     message: String,
-    ctx: Context,
     duration: Int = Snackbar.LENGTH_LONG,
     margin: Int = 20,
     function: (Snackbar) -> Unit,
@@ -91,13 +90,14 @@ fun View.showSimpleSnackBar(
     val snackbar = Snackbar.make(this, message, duration)
     val view = snackbar.view
     val textview = view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-    textview.setTextColor(ContextCompat.getColor(ctx, R.color.primary))
+    textview.setTextColor(ContextCompat.getColor(this.context, R.color.primary))
     view.elevation = 120.0f
-    val background = ContextCompat.getColor(ctx, R.color.white)
+    val background = ContextCompat.getColor(this.context, R.color.white)
     view.setBackgroundColor(background)
     val marginSnackbar: ViewGroup.MarginLayoutParams =
         view.layoutParams as ViewGroup.MarginLayoutParams
-    marginSnackbar.setMargins(20, 0, 20, calculatorPxToDps(ctx, margin))
+    marginSnackbar.setMargins(20, 0, 20,
+        calculatorPxToDps(this.context, margin))
     function(snackbar)
     snackbar.show()
 }

@@ -56,7 +56,7 @@ class CheckInActivity : AppActivity() {
             reloadHome()
         }
         userViewModel.snackbar.observe(this) {
-            binding.root.showSimpleSnackBar(it, this) {}
+            binding.root.makeSnackbar(it) {}
         }
     }
 

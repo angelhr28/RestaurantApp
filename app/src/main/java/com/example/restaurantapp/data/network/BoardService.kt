@@ -14,8 +14,8 @@ class BoardService @Inject constructor(
         return firestore.collection("boards").get().await().documents.map { it.toBoardServices() }
     }
 
-    suspend fun delete(id: Int) {
-        firestore.collection("board").document(id.toString())
+    suspend fun delete(id: String) {
+        firestore.collection("boards").document(id)
             .delete().await()
     }
 
