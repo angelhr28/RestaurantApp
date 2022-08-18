@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import com.example.restaurantapp.R
 import com.example.restaurantapp.databinding.ActivityMainBinding
 import com.example.restaurantapp.ui.viewmodel.UserViewModel
 import com.example.restaurantapp.utils.*
@@ -55,7 +56,7 @@ class MainActivity : AppActivity() {
             }
         }
         userViewModel.isLogIn.observe(this) {
-            reloadHome()
+            if (it) reloadHome()
         }
         userViewModel.snackbar.observe(this) {
             binding.root.makeSnackbar(it) {}

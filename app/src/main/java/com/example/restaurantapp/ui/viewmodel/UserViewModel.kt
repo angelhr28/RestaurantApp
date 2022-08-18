@@ -1,5 +1,6 @@
 package com.example.restaurantapp.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -62,6 +63,8 @@ class UserViewModel @Inject constructor(
     fun isLogIn() {
         verifyLogInUseCase()?.let {
             isLogIn.postValue(true)
+        } ?: kotlin.run {
+            isLogIn.postValue(false)
         }
     }
 

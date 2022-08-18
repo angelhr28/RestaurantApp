@@ -31,4 +31,11 @@
         <item name="color">@color/primary</item>
     </style>
 
+
+    <style name="SplashTheme" parent="Theme.RestaurantApp">
+        <item name="android:windowBackground">
+            @drawable/splashscreen
+        </item>
+    </style>
+
 </resources>
