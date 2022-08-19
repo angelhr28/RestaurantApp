@@ -1,15 +1,12 @@
 package com.example.restaurantapp.ui.view.screen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
 import com.example.restaurantapp.R
 import com.example.restaurantapp.ui.viewmodel.UserViewModel
 import com.example.restaurantapp.utils.AppActivity
-import com.example.restaurantapp.utils.makeSnackbar
 
 class SplashScreenActivity : AppActivity() {
     private val userViewModel: UserViewModel by viewModels()
